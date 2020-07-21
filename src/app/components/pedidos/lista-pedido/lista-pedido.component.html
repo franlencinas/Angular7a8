@@ -1,0 +1,79 @@
+<div class="class-header">
+  <br>
+  <h3 class="text-center">Listado de pedidos</h3>
+  <hr>
+</div>
+
+<!--<div class="example-header mat-elevation-z8 filtro">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)"
+           placeholder="Buscar Pedido">
+  </mat-form-field>
+</div>-->
+<div class="table-wrapper-scroll-y my-custom-scrollbar table">
+  <table class="table table-hover" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!--  Columna ID-->
+    <ng-container matColumnDef="numPedido">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nro Pedido</th>
+      <td mat-cell *matCellDef="let row"> {{row.numPedido}} </td>
+    </ng-container>
+
+    <!-- Cliente -->
+    <ng-container matColumnDef="nombreCliente">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente</th>
+      <td mat-cell *matCellDef="let row"> {{row.nombreTemporal}} </td>
+    </ng-container>
+
+    <!-- Telefono -->
+    <ng-container matColumnDef="telefono">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
+      <td mat-cell *matCellDef="let row"> {{row.cliente.telefono}} </td>
+    </ng-container>
+
+    <!-- Detalle Pedido -->
+    <ng-container matColumnDef="detallePedido">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Detalle</th>
+      <td mat-cell *matCellDef="let row" [innerHTML]="row.informe|separador"></td>
+    </ng-container>
+
+    <!-- Estado -->
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+      <td mat-cell *matCellDef="let row">
+        <p *ngIf="row.estadoListo==true && row.fechaAnulado==null">Listo</p>
+        <p *ngIf="row.estadoListo==false && row.fechaAnulado==null">En Preparación</p>
+        <p *ngIf="row.fechaAnulado!=null">Cancelado</p>
+      </td>
+    </ng-container>
+
+    <!-- Envio -->
+    <ng-container matColumnDef="con_envio">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Envio </th>
+        <td mat-cell *matCellDef="let row">
+          <p *ngIf="row.con_envio==true">A Domicilio</p>
+          <p *ngIf="row.con_envio==false">En tienda</p>
+        </td>
+    </ng-container>
+
+    <!-- Total -->
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+      <td mat-cell *matCellDef="let row"> {{row.total|currency}} </td>
+    </ng-container>
+
+    <!--Eliminar pedido-->
+    <ng-container matColumnDef="eliminar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Eliminar </th>
+      <td mat-cell *matCellDef="let row"><mat-icon (click)="eliminarPedido(row)">delete</mat-icon></td>
+    </ng-container>
+    <!-- Acciones -->
+    <!--<ng-container matColumnDef="acciones">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
+      <mat-cell *matCellDef="let row"><mat-icon (click)="eliminarPedido(row.id)">delete</mat-icon></mat-cell>
+      <mat-cell *matCellDef="let row"><mat-icon (click)="modificarPedido(row.id)">update</mat-icon></mat-cell>
+    </ng-container>-->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

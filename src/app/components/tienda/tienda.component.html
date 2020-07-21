@@ -1,0 +1,16 @@
+<div class="tienda">
+  <nav aria-label="Tienda">
+    <ul class="pagination justify-content-center">
+      <li class="page-item "><a class="page-link button" (click)="cambiarCategoria('1')">Pizzas</a></li>
+      <li class="page-item "><a class="page-link button" (click)="cambiarCategoria('2')">Empanadas</a></li>
+      <li class="page-item "><a class="page-link button" (click)='cambiarCategoria("3")'>Hamburguesas</a></li>
+      <li class="page-item "><a class="page-link button" (click)='cambiarCategoria("4")'>Bebidas</a></li>
+    </ul>
+  </nav>
+  <div *ngIf="parentMessage != '4'">
+    <app-articulos-manufacturados [childMessage]="parentMessage"></app-articulos-manufacturados>
+  </div>
+  <div *ngIf="parentMessage == '4'">
+    <app-articulo [childMessage]="parentMessage"></app-articulo>
+  </div>
+</div>

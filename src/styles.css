@@ -1,0 +1,61 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+/*ANIMACION*/
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+  
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+  
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+}
+  
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+  /*----------*/
+.thumb{
+    width: 200px;
+    transition: 300ms all ease;
+}
+.grande{
+    width: 400px;
+}
+.titulo{
+    background: #CCC;
+    border: 2px solid navy;
+    padding: 10px;
+}
+.tituloGrande{
+    font-size: 60px;
+}
+
+body{
+    background: url(assets/fondologo.png);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-toolbar.mat-primary {
+  background-color: #fb7e29;
+}
+.mat-icon{
+  cursor: pointer;
+}
